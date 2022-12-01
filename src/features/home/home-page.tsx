@@ -6,8 +6,13 @@ import {
     Image,
     Segment,
 } from 'semantic-ui-react';
+import { History } from 'history';
 
-const HomePage: React.FC = () => {
+interface HomePageProps {
+    history: History;
+}
+
+const HomePage: React.FC<HomePageProps> = ({ history }) => {
     return (
         <Segment inverted textAlign='center' vertical className='masthead'>
             <Container>
@@ -19,7 +24,11 @@ const HomePage: React.FC = () => {
                     />
                     Re-vents
                 </Header>
-                <Button size='huge' inverted>
+                <Button
+                    onClick={() => history.push('/events')}
+                    size='huge'
+                    inverted
+                >
                     Get started
                     <Icon name='arrow right' inverted />
                 </Button>

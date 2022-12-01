@@ -21,21 +21,35 @@ function App() {
     };
     return (
         <>
-            <NavBar setFromOpen={handleCreateFormOpen} />
-            <Container className='main'>
-                <Route path='/' exact component={HomePage} />
-                <Route path='/events' exact component={EventDashBoard} />
-                <Route path='/events/:id' component={EventDetailedPage} />
-                <Route path='/createEvent' component={EventForm} />
+            <Route path='/' exact component={HomePage} />
+            <Route
+                path={'/(.+)'}
+                render={() => (
+                    <>
+                        <NavBar setFromOpen={handleCreateFormOpen} />
+                        <Container className='main'>
+                            <Route
+                                path='/events'
+                                exact
+                                component={EventDashBoard}
+                            />
+                            <Route
+                                path='/events/:id'
+                                component={EventDetailedPage}
+                            />
+                            <Route path='/createEvent' component={EventForm} />
 
-                {/* so much important another way for show events  */}
-                {/* <EventDashBoard
-                    formOpen={formOpen}
-                    setFormOpen={setFormOpen}
-                    selectEvent={handleSelectEvent}
-                    selectedEvent={selectedEvent}
-                /> */}
-            </Container>
+                            {/* so much important another way for show events  */}
+                            {/* <EventDashBoard
+                        formOpen={formOpen}
+                        setFormOpen={setFormOpen}
+                        selectEvent={handleSelectEvent}
+                        selectedEvent={selectedEvent}
+                    /> */}
+                        </Container>
+                    </>
+                )}
+            />
         </>
     );
 }
