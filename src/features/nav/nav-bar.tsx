@@ -5,10 +5,10 @@ import SignedInMenu from './signed-in-menu';
 import SignedOutMenu from './signed-out-menu';
 
 interface NavBarProps {
-    setFromOpen: React.Dispatch<React.SetStateAction<boolean>>;
+    // setFromOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const NavBar: React.FC<NavBarProps> = ({ setFromOpen }) => {
+const NavBar: React.FC<NavBarProps> = ({}) => {
     const history = useHistory();
     const [authenticated, setAuthenticated] = useState(false);
 
@@ -32,7 +32,6 @@ const NavBar: React.FC<NavBarProps> = ({ setFromOpen }) => {
                 {authenticated && (
                     <Menu.Item as={NavLink} to='/createEvent' name='create'>
                         <Button
-                            // onClick={() => setFromOpen(true)}
                             positive
                             inverted
                             content='Create event'

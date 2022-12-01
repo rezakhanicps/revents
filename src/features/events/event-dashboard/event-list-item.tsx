@@ -4,12 +4,10 @@ import EventListAttendee from './event-list-attendee';
 
 interface ListItemProps {
     event: Event;
-    selectEvent: (e: Event) => void;
     deleteEvent: (id: string) => void;
 }
 const EventListItem: React.FC<ListItemProps> = ({
     event,
-    selectEvent,
     deleteEvent,
 }) => {
     return (

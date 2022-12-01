@@ -8,17 +8,6 @@ import EventDetailedPage from './features/events/event-detailed/event-detailed-p
 import EventForm from './features/events/event-form/event-form';
 
 function App() {
-    const [formOpen, setFormOpen] = useState(false);
-    const [selectedEvent, setSelectedEvent] = useState<Event | null>(null);
-
-    const handleSelectEvent = (event: Event | null) => {
-        setSelectedEvent(event);
-        setFormOpen(true);
-    };
-    const handleCreateFormOpen = () => {
-        setSelectedEvent(null);
-        setFormOpen(true);
-    };
     return (
         <>
             <Route path='/' exact component={HomePage} />
@@ -26,7 +15,7 @@ function App() {
                 path={'/(.+)'}
                 render={() => (
                     <>
-                        <NavBar setFromOpen={handleCreateFormOpen} />
+                        <NavBar />
                         <Container className='main'>
                             <Route
                                 path='/events'
@@ -37,7 +26,10 @@ function App() {
                                 path='/events/:id'
                                 component={EventDetailedPage}
                             />
-                            <Route path='/createEvent' component={EventForm} />
+                            <Route
+                                path={['/createEvent', '/manage/:id']}
+                                component={EventForm}
+                            />
 
                             {/* so much important another way for show events  */}
                             {/* <EventDashBoard

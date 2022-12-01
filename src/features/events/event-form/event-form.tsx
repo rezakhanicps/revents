@@ -1,5 +1,6 @@
 import cuid from 'cuid';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Segment, Header, Form, Button } from 'semantic-ui-react';
 
 interface EventFormProps {
@@ -114,7 +115,8 @@ export const EventForm: React.FC<EventFormProps> = ({
                     content='Submit'
                 />
                 <Button
-                    onClick={() => setFormOpen(false)}
+                    as={Link}
+                    to='/events'
                     type='submit'
                     floated='right'
                     content='Cancel'
