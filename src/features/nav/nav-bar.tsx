@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom';
 import { Menu, Container, Button } from 'semantic-ui-react';
 
 interface NavBarProps {
@@ -8,7 +9,7 @@ const NavBar: React.FC<NavBarProps> = ({ setFromOpen }) => {
     return (
         <Menu inverted fixed='top'>
             <Container>
-                <Menu.Item header>
+                <Menu.Item as={NavLink} exact to='/' header name='home'>
                     <img
                         src='/assets/logo.png'
                         alt='logo'
@@ -16,10 +17,10 @@ const NavBar: React.FC<NavBarProps> = ({ setFromOpen }) => {
                     />
                     Re-events
                 </Menu.Item>
-                <Menu.Item name='Events' />
-                <Menu.Item>
+                <Menu.Item as={NavLink} to='/events' name='Events' />
+                <Menu.Item as={NavLink} to='/createEvent' >
                     <Button
-                        onClick={() => setFromOpen(true)}
+                        // onClick={() => setFromOpen(true)}
                         positive
                         inverted
                         content='Create event'
