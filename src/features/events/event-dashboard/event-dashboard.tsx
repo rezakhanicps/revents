@@ -7,11 +7,15 @@ import EventList from './event-list';
 interface EventDashBoardProps {
     formOpen: boolean;
     setFormOpen: React.Dispatch<React.SetStateAction<boolean>>;
+    selectEvent: (e: Event) => void;
+    selectedEvent: Event | null;
 }
 
 const EventDashBoard: React.FC<EventDashBoardProps> = ({
     formOpen,
     setFormOpen,
+    selectEvent,
+    selectedEvent,
 }) => {
     const [events, setEvents] = useState(sampleData as Event[]);
 
@@ -22,7 +26,7 @@ const EventDashBoard: React.FC<EventDashBoardProps> = ({
     return (
         <Grid>
             <Grid.Column width={10}>
-                <EventList events={events} />
+                <EventList events={events} selectEvent={selectEvent} />
             </Grid.Column>
             <Grid.Column width={6}>
                 {formOpen && (
@@ -30,6 +34,8 @@ const EventDashBoard: React.FC<EventDashBoardProps> = ({
                         setFormOpen={setFormOpen}
                         setEvents={setEvents}
                         createEvent={handleCreateEvent}
+                        selectedEvent={selectedEvent}
+                        key={selectedEvent ? selectedEvent.id : null}
                     />
                 )}
             </Grid.Column>

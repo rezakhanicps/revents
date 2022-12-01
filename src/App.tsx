@@ -4,13 +4,27 @@ import NavBar from './features/nav/nav-bar';
 import { Container } from 'semantic-ui-react';
 
 function App() {
-    const [formOpen, setFormOpen] = useState(true);
+    const [formOpen, setFormOpen] = useState(false);
+    const [selectedEvent, setSelectedEvent] = useState<Event | null>(null);
 
+    const handleSelectEvent = (event: Event) => {
+        setSelectedEvent(event);
+        setFormOpen(true);
+    };
+    const handleCreateFormOpen = () => {
+        setSelectedEvent(null);
+        setFormOpen(true);
+    };
     return (
         <>
-            <NavBar setFromOpen={setFormOpen} />
+            <NavBar setFromOpen={handleCreateFormOpen} />
             <Container className='main'>
-                <EventDashBoard formOpen={formOpen} setFormOpen={setFormOpen} />
+                <EventDashBoard
+                    formOpen={formOpen}
+                    setFormOpen={setFormOpen}
+                    selectEvent={handleSelectEvent}
+                    selectedEvent={selectedEvent}
+                />
             </Container>
         </>
     );

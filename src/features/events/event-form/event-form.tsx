@@ -6,14 +6,16 @@ interface EventFormProps {
     setFormOpen: React.Dispatch<React.SetStateAction<boolean>>;
     setEvents: React.Dispatch<React.SetStateAction<Event[]>>;
     createEvent: (e: Event) => void;
+    selectedEvent: Event | null;
 }
 
 export const EventForm: React.FC<EventFormProps> = ({
     setFormOpen,
     setEvents,
     createEvent,
+    selectedEvent,
 }) => {
-    const initialValues = {
+    const initialValues = selectedEvent ?? {
         title: '',
         category: '',
         description: '',
@@ -42,7 +44,9 @@ export const EventForm: React.FC<EventFormProps> = ({
 
     return (
         <Segment clearing>
-            <Header content='Create new event' />
+            <Header
+                content={selectedEvent ? 'Edit the event' : 'Create new event'}
+            />
             <Form onSubmit={handleFormSubmit}>
                 <Form.Field>
                     <input
