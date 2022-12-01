@@ -1,9 +1,13 @@
 import { List, Image } from 'semantic-ui-react';
 
-const EventListAttendee = () => {
+interface AttendeeProps {
+    attendee: Attendee;
+}
+
+const EventListAttendee: React.FC<AttendeeProps> = ({ attendee }) => {
     return (
         <List.Item>
-            <Image size='mini' circular src='/assets/user.png' />
+            <Image size='mini' circular src={attendee.photoURL} />
         </List.Item>
     );
 };
