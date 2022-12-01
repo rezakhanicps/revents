@@ -1,6 +1,10 @@
 import { Segment, Header, Form, Button } from 'semantic-ui-react';
 
-export const EventForm = () => {
+interface EventFormProps {
+    setFormOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export const EventForm: React.FC<EventFormProps> = ({ setFormOpen }) => {
     return (
         <Segment clearing>
             <Header content='Create new event' />
@@ -30,7 +34,12 @@ export const EventForm = () => {
                     positive
                     content='Submit'
                 />
-                <Button type='submit' floated='right' content='Cancel' />
+                <Button
+                    onClick={() => setFormOpen(false)}
+                    type='submit'
+                    floated='right'
+                    content='Cancel'
+                />
             </Form>
         </Segment>
     );

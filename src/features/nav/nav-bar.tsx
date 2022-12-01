@@ -1,6 +1,10 @@
 import { Menu, Container, Button } from 'semantic-ui-react';
 
-const NavBar: React.FC = () => {
+interface NavBarProps {
+    setFromOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const NavBar: React.FC<NavBarProps> = ({ setFromOpen }) => {
     return (
         <Menu inverted fixed='top'>
             <Container>
@@ -14,7 +18,12 @@ const NavBar: React.FC = () => {
                 </Menu.Item>
                 <Menu.Item name='Events' />
                 <Menu.Item>
-                    <Button positive inverted content='Create event' />
+                    <Button
+                        onClick={() => setFromOpen(true)}
+                        positive
+                        inverted
+                        content='Create event'
+                    />
                 </Menu.Item>
                 <Menu.Item position='right'>
                     <Button basic inverted content='Login' />

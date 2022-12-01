@@ -1,15 +1,27 @@
+import { useState } from 'react';
 import { Grid } from 'semantic-ui-react';
 import { sampleData } from '../../../app/api/sample-data';
 import EventForm from '../event-form/event-form';
 import EventList from './event-list';
-const EventDashBoard = () => {
+
+interface EventDashBoardProps {
+    formOpen: boolean;
+    setFormOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const EventDashBoard: React.FC<EventDashBoardProps> = ({
+    formOpen,
+    setFormOpen,
+}) => {
+    const [events, setEvents] = useState(sampleData as Event[]);
+
     return (
         <Grid>
             <Grid.Column width={10}>
-                <EventList events={sampleData as Event[]} />
+                <EventList events={events} />
             </Grid.Column>
             <Grid.Column width={6}>
-                <EventForm />
+                {formOpen && <EventForm setFormOpen={setFormOpen} />}
             </Grid.Column>
         </Grid>
     );
