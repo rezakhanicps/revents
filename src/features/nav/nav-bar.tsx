@@ -9,7 +9,7 @@ const NavBar: React.FC<NavBarProps> = ({ setFromOpen }) => {
     return (
         <Menu inverted fixed='top'>
             <Container>
-                <Menu.Item as={NavLink} exact to='/' header name='home'>
+                <Menu.Item as={NavLink} exact to='/' header name='home' >
                     <img
                         src='/assets/logo.png'
                         alt='logo'
@@ -17,8 +17,8 @@ const NavBar: React.FC<NavBarProps> = ({ setFromOpen }) => {
                     />
                     Re-events
                 </Menu.Item>
-                <Menu.Item as={NavLink} to='/events' name='Events' />
-                <Menu.Item as={NavLink} to='/createEvent' >
+                <Menu.Item as={NavLink} to='/events'  name='events'/>
+                <Menu.Item as={NavLink} to='/createEvent'  name='create' >
                     <Button
                         // onClick={() => setFromOpen(true)}
                         positive
