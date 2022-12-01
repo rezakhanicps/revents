@@ -4,8 +4,13 @@ import EventListAttendee from './event-list-attendee';
 interface ListItemProps {
     event: Event;
     selectEvent: (e: Event) => void;
+    deleteEvent: (id: string) => void;
 }
-const EventListItem: React.FC<ListItemProps> = ({ event, selectEvent }) => {
+const EventListItem: React.FC<ListItemProps> = ({
+    event,
+    selectEvent,
+    deleteEvent,
+}) => {
     return (
         <Segment.Group>
             <Segment>
@@ -43,6 +48,14 @@ const EventListItem: React.FC<ListItemProps> = ({ event, selectEvent }) => {
             </Segment>
             <Segment clearing>
                 <div>{event.description}</div>
+                <Button
+                    onClick={() => {
+                        deleteEvent(event.id);
+                    }}
+                    color='red'
+                    floated='right'
+                    content='Delete'
+                />
                 <Button
                     onClick={() => {
                         selectEvent(event);

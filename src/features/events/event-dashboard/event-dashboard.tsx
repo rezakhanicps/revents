@@ -30,10 +30,18 @@ const EventDashBoard: React.FC<EventDashBoardProps> = ({
         selectEvent(null);
     };
 
+    const handleDeleteEvent = (eventId: string) => {
+        setEvents(events.filter((e) => e.id !== eventId));
+    };
+
     return (
         <Grid>
             <Grid.Column width={10}>
-                <EventList events={events} selectEvent={selectEvent} />
+                <EventList
+                    events={events}
+                    selectEvent={selectEvent}
+                    deleteEvent={handleDeleteEvent}
+                />
             </Grid.Column>
             <Grid.Column width={6}>
                 {formOpen && (
