@@ -1,4 +1,4 @@
-import { Segment, Item, Icon, List } from 'semantic-ui-react';
+import { Segment, Item, Icon, List, Button } from 'semantic-ui-react';
 import EventListAttendee from './event-list-attendee';
 const EventListItem = () => {
     return (
@@ -25,12 +25,16 @@ const EventListItem = () => {
                 </span>
             </Segment>
             <Segment secondary>
-                <List>
+                <List horizontal>
                     <EventListAttendee />
                     <EventListAttendee />
                     <EventListAttendee />
                     <EventListAttendee />
                 </List>
+            </Segment>
+            <Segment clearing>
+                <div>Description of event</div>
+                <Button color='teal' floated='right' content='View' />
             </Segment>
         </Segment.Group>
     );
