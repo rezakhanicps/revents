@@ -4,7 +4,7 @@ import NavBar from './features/nav/nav-bar';
 import { Container } from 'semantic-ui-react';
 
 function App() {
-    const [formOpen, setFormOpen] = useState(false);
+    const [formOpen, setFormOpen] = useState(true);
 
     return (
         <>
