@@ -7,6 +7,7 @@ interface EventFormProps {
     setEvents: React.Dispatch<React.SetStateAction<Event[]>>;
     createEvent: (e: Event) => void;
     selectedEvent: Event | null;
+    updateEvent: (e: Event) => void;
 }
 
 export const EventForm: React.FC<EventFormProps> = ({
@@ -14,6 +15,7 @@ export const EventForm: React.FC<EventFormProps> = ({
     setEvents,
     createEvent,
     selectedEvent,
+    updateEvent,
 }) => {
     const initialValues = selectedEvent ?? {
         title: '',
@@ -26,14 +28,16 @@ export const EventForm: React.FC<EventFormProps> = ({
     const [values, setValues] = useState(initialValues);
 
     const handleFormSubmit = () => {
-        //@ts-ignore
-        createEvent({
-            ...values,
-            id: cuid(),
-            hostedBy: 'Bob',
-            attendees: [],
-            hostPhotoURL: './assets/user.png',
-        });
+        selectedEvent
+            ? updateEvent({ ...selectedEvent, ...values })
+            : //@ts-ignore
+              createEvent({
+                  ...values,
+                  id: cuid(),
+                  hostedBy: 'Bob',
+                  attendees: [],
+                  hostPhotoURL: './assets/user.png',
+              });
         setFormOpen(false);
     };
 
