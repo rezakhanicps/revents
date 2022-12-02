@@ -1,15 +1,14 @@
 import { Link } from 'react-router-dom';
 import { Segment, Item, Icon, List, Button } from 'semantic-ui-react';
+import { useEventAction } from '../../../app/hooks';
 import EventListAttendee from './event-list-attendee';
 
 interface ListItemProps {
     event: Event;
-    deleteEvent: (id: string) => void;
 }
-const EventListItem: React.FC<ListItemProps> = ({
-    event,
-    deleteEvent,
-}) => {
+const EventListItem: React.FC<ListItemProps> = ({ event }) => {
+    const { deleteEvent } = useEventAction();
+
     return (
         <Segment.Group>
             <Segment>

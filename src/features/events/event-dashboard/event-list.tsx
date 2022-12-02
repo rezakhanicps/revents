@@ -15,7 +15,6 @@ const EventList: React.FC<EventListProps> = ({
                 <EventListItem
                     event={event}
                     key={event.id}
-                    deleteEvent={deleteEvent}
                 />
             ))}
         </>

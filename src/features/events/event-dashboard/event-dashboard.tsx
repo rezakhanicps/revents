@@ -1,18 +1,11 @@
-import { useState } from 'react';
 import { Grid } from 'semantic-ui-react';
-import { sampleData } from '../../../app/api/sample-data';
+import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 import EventList from './event-list';
 
-interface EventDashBoardProps {
-    formOpen: boolean;
-    setFormOpen: React.Dispatch<React.SetStateAction<boolean>>;
-    selectEvent: (e: Event | null) => void;
-    selectedEvent: Event | null;
-}
 
-const EventDashBoard: React.FC<EventDashBoardProps> = () => {
-    const [events, setEvents] = useState(sampleData as Event[]);
-
+const EventDashBoard: React.FC = () => {
+    const events = useAppSelector(state=>state.events.data)
+    // const {} = useAppDispatch()
     // const handleCreateEvent = (event: Event) => {
     //     setEvents([...events, event]);
     // };
@@ -24,7 +17,7 @@ const EventDashBoard: React.FC<EventDashBoardProps> = () => {
     // };
 
     const handleDeleteEvent = (eventId: string) => {
-        setEvents(events.filter((e) => e.id !== eventId));
+        // setEvents(events.filter((e) => e.id !== eventId));
     };
 
     return (
