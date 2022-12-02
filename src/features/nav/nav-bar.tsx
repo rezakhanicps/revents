@@ -28,14 +28,11 @@ const NavBar: React.FC<NavBarProps> = ({}) => {
                     />
                     Re-events
                 </Menu.Item>
-                <Menu.Item as={NavLink} to='/events' name='events' />
+                <Menu.Item as={NavLink} to='/events' name='Events' />
+                <Menu.Item as={NavLink} to='/sandbox' name='Sandbox' />
                 {authenticated && (
                     <Menu.Item as={NavLink} to='/createEvent' name='create'>
-                        <Button
-                            positive
-                            inverted
-                            content='Create event'
-                        />
+                        <Button positive inverted content='Create event' />
                     </Menu.Item>
                 )}
                 {authenticated ? (

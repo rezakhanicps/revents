@@ -6,6 +6,7 @@ import { Route } from 'react-router-dom';
 import HomePage from './features/home/home-page';
 import EventDetailedPage from './features/events/event-detailed/event-detailed-page';
 import EventForm from './features/events/event-form/event-form';
+import Sandbox from './features/sandbox/sandbox';
 
 function App() {
     return (
@@ -22,6 +23,7 @@ function App() {
                                 exact
                                 component={EventDashBoard}
                             />
+                            <Route path='/sandbox' exact component={Sandbox} />
                             <Route
                                 path='/events/:id'
                                 component={EventDetailedPage}
