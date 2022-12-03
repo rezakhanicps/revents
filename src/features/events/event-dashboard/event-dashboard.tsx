@@ -4,7 +4,6 @@ import EventList from './event-list';
 
 const EventDashBoard: React.FC = () => {
     const events = useAppSelector((state) => state.events.data);
-
     return (
         <Grid>
             <Grid.Column width={10}>
