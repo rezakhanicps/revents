@@ -1,11 +1,11 @@
-import EventDashBoard from './features/events/event-dashboard/event-dashboard';
-import NavBar from './features/nav/nav-bar';
+import EventDashBoard from '../../features/events/event-dashboard/event-dashboard';
+import NavBar from '../../features/nav/nav-bar';
 import { Container } from 'semantic-ui-react';
 import { Route, useLocation } from 'react-router-dom';
-import HomePage from './features/home/home-page';
-import EventDetailedPage from './features/events/event-detailed/event-detailed-page';
-import EventForm from './features/events/event-form/event-form';
-import Sandbox from './features/sandbox/sandbox';
+import HomePage from '../../features/home/home-page';
+import EventDetailedPage from '../../features/events/event-detailed/event-detailed-page';
+import EventForm from '../../features/events/event-form/event-form';
+import Sandbox from '../../features/sandbox/sandbox';
 
 function App() {
     const { key } = useLocation();

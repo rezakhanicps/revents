@@ -3,16 +3,17 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { store } from './app/store';
-import App from './App';
+import App from './app/layout/App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import './index.css';
-
+import ScrollToTop from './app/layout/scroll-to-top';
 
 ReactDOM.render(
     <React.StrictMode>
         <Provider store={store}>
             <BrowserRouter>
+                <ScrollToTop />
                 <App />
             </BrowserRouter>
         </Provider>
