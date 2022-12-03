@@ -1,19 +1,18 @@
 import { useField, FieldHookConfig } from 'formik';
 import { FormField, Label, Select, SelectProps } from 'semantic-ui-react';
 
-const MySelectInput: React.FC<FieldHookConfig<string> & SelectProps> = ({ ...props }) => {
+const MySelectInput: React.FC<FieldHookConfig<string> & SelectProps> = ({
+    ...props
+}) => {
     const [field, meta, helpers] = useField(props);
 
     return (
         <FormField error={meta.touched && !!meta.error}>
             <label>{props['aria-label']}</label>
-            {/* @ts-ignore */}
             <Select
                 clearable
                 value={field.value || null}
-                //@ts-ignore
-                onChange={(e, data) => helpers.setValue(data.value)}
-                //@ts-ignore
+                onChange={(e, data) => helpers.setValue(data.value as string)}
                 onBlur={() => helpers.setTouched(true)}
                 {...props}
             />

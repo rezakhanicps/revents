@@ -1,3 +1,4 @@
+import { format } from 'date-fns';
 import { Link } from 'react-router-dom';
 import { Segment, Item, Icon, List, Button } from 'semantic-ui-react';
 import { useEventAction } from '../../../app/hooks';
@@ -30,7 +31,8 @@ const EventListItem: React.FC<ListItemProps> = ({ event }) => {
             </Segment>
             <Segment>
                 <span>
-                    <Icon name='clock' /> {event.date}
+                    <Icon name='clock' />{' '}
+                    {format(event.date, 'MMM d, yyyy h:mm a')}
                     <Icon name='marker' /> {event.venue}
                 </span>
             </Segment>

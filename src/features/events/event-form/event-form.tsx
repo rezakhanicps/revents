@@ -8,6 +8,7 @@ import MyTextInput from '../../../app/common/form/my-text-input';
 import MyTextArea from '../../../app/common/form/my-text-area';
 import MySelectInput from '../../../app/common/form/my-select-input';
 import { categoryData } from '../../../app/api/category-options';
+import MyDateInput from '../../../app/common/form/my-date-input';
 
 const validationSchema = Yup.object({
     title: Yup.string().required('You must provide a title'),
@@ -73,10 +74,14 @@ export const EventForm: React.FC<EventFormProps> = ({ match, history }) => {
                     <Header sub color='teal' content='Event Location Details' />
                     <MyTextInput name='city' placeholder='City' />
                     <MyTextInput name='venue' placeholder='Venue' />
-                    <MyTextInput
+                    <MyDateInput
                         name='date'
-                        placeholder='Event date'
-                        type='date'
+                        placeholderText='Event date'
+                        onChange={() => null}
+                        timeFormat='HH:mm'
+                        showTimeSelect
+                        timeCaption='time'
+                        dateFormat='MMM d, yyy h:mm a'
                     />
 
                     <Button
