@@ -6,6 +6,8 @@ import { useAppSelector, useEventAction } from '../../../app/hooks';
 import * as Yup from 'yup';
 import MyTextInput from '../../../app/common/form/my-text-input';
 import MyTextArea from '../../../app/common/form/my-text-area';
+import MySelectInput from '../../../app/common/form/my-select-input';
+import { categoryData } from '../../../app/api/category-options';
 
 const validationSchema = Yup.object({
     title: Yup.string().required('You must provide a title'),
@@ -58,7 +60,11 @@ export const EventForm: React.FC<EventFormProps> = ({ match, history }) => {
                 <Form className='ui form'>
                     <Header sub color='teal' content='Event Details' />
                     <MyTextInput name='title' placeholder='Event title' />
-                    <MyTextInput name='category' placeholder='Category' />
+                    <MySelectInput
+                        name='category'
+                        placeholder='Category'
+                        options={categoryData}
+                    />
                     <MyTextArea
                         name='description'
                         placeholder='Description'
