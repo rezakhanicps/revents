@@ -3,8 +3,12 @@ import ModalWrapper from '../../app/common/modals/modal-wrapper';
 import * as Yup from 'yup';
 import MyTextInput from '../../app/common/form/my-text-input';
 import { Button } from 'semantic-ui-react';
+import { useAuthAction, useModalAction } from '../../app/hooks';
 
 const LoginForm: React.FC = () => {
+    const { signInUser } = useAuthAction();
+    const { closeModal } = useModalAction();
+
     return (
         <ModalWrapper size='mini' header='Sign in to Re-vents'>
             <Formik
@@ -13,8 +17,10 @@ const LoginForm: React.FC = () => {
                     email: Yup.string().required().email(),
                     password: Yup.string().required(),
                 })}
-                onSubmit={(values) => {
-                    console.log(values);
+                onSubmit={(values, { setSubmitting }) => {
+                    signInUser(values);
+                    setSubmitting(false);
+                    closeModal();
                 }}
             >
                 {({ isSubmitting, isValid, dirty }) => (

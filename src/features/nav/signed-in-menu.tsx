@@ -1,15 +1,21 @@
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { Menu, Image, Dropdown } from 'semantic-ui-react';
+import { useAppSelector, useAuthAction } from '../../app/hooks';
+import { selectAuth } from '../auth/auth-slice';
 
-interface SingedInMenuProps {
-    signOut: () => void;
-}
+const SignedInMenu: React.FC = () => {
+    const { currentUser } = useAppSelector(selectAuth);
+    const { signOutUser } = useAuthAction();
+    const history = useHistory();
 
-const SignedInMenu: React.FC<SingedInMenuProps> = ({ signOut }) => {
     return (
         <Menu.Item position='right'>
-            <Image avatar spaced='right' src='/assets/user.png' />
-            <Dropdown pointing='top left' text='bob'>
+            <Image
+                avatar
+                spaced='right'
+                src={currentUser?.photoURL || '/assets/user.png'}
+            />
+            <Dropdown pointing='top left' text={currentUser?.email}>
                 <Dropdown.Menu>
                     <Dropdown.Item
                         as={Link}
@@ -19,7 +25,10 @@ const SignedInMenu: React.FC<SingedInMenuProps> = ({ signOut }) => {
                     />
                     <Dropdown.Item text='My Profile' icon='user' />
                     <Dropdown.Item
-                        onClick={signOut}
+                        onClick={() => {
+                            signOutUser();
+                            history.push('/');
+                        }}
                         text='Sign out'
                         icon='power'
                     />

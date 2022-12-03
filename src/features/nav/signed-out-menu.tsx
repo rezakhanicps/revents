@@ -1,11 +1,6 @@
 import { Menu, Button } from 'semantic-ui-react';
 import { useModalAction } from '../../app/hooks';
-
-interface SignedOutMenuProps {
-    setAuthenticated: React.Dispatch<React.SetStateAction<boolean>>;
-}
-
-const SignedOutMenu: React.FC<SignedOutMenuProps> = ({ setAuthenticated }) => {
+const SignedOutMenu: React.FC = () => {
     const { openModal } = useModalAction();
 
     return (

@@ -1,21 +1,12 @@
-import { useState } from 'react';
-import { NavLink, useHistory } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { Menu, Container, Button } from 'semantic-ui-react';
+import { useAppSelector } from '../../app/hooks';
+import { selectAuth } from '../auth/auth-slice';
 import SignedInMenu from './signed-in-menu';
 import SignedOutMenu from './signed-out-menu';
 
-interface NavBarProps {
-    // setFromOpen: React.Dispatch<React.SetStateAction<boolean>>;
-}
-
-const NavBar: React.FC<NavBarProps> = ({}) => {
-    const history = useHistory();
-    const [authenticated, setAuthenticated] = useState(false);
-
-    const handleSignedOut = () => {
-        setAuthenticated(false);
-        history.push('/');
-    };
+const NavBar: React.FC = () => {
+    const { authenticated } = useAppSelector(selectAuth);
 
     return (
         <Menu inverted fixed='top'>
@@ -36,9 +27,9 @@ const NavBar: React.FC<NavBarProps> = ({}) => {
                     </Menu.Item>
                 )}
                 {authenticated ? (
-                    <SignedInMenu signOut={handleSignedOut} />
+                    <SignedInMenu  />
                 ) : (
-                    <SignedOutMenu setAuthenticated={setAuthenticated} />
+                    <SignedOutMenu  />
                 )}
             </Container>
         </Menu>
