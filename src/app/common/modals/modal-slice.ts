@@ -3,7 +3,7 @@ import { RootState } from '../../../app/store';
 
 interface ModalPayload {
     modalType: string;
-    modalProps: any;
+    modalProps?: any;
 }
 
 export interface EventsState {
