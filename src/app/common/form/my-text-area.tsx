@@ -1,14 +1,14 @@
 import { useField, FieldHookConfig } from 'formik';
 import { FormField, Label } from 'semantic-ui-react';
 
-const MyTextInput: React.FC<FieldHookConfig<string>> = ({ ...props }) => {
+const MyTextArea: React.FC<FieldHookConfig<string>> = ({ ...props }) => {
     const [field, meta] = useField(props);
 
     return (
         <FormField error={meta.touched && !!meta.error}>
             <label>{props['aria-label']}</label>
             {/* @ts-ignore */}
-            <input {...field} {...props} />
+            <textarea {...field} {...props} />
             {meta.touched && meta.error ? (
                 <Label basic color='red'>
                     {meta.error}
@@ -18,4 +18,4 @@ const MyTextInput: React.FC<FieldHookConfig<string>> = ({ ...props }) => {
     );
 };
 
-export default MyTextInput;
+export default MyTextArea;

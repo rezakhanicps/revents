@@ -5,6 +5,7 @@ import { Segment, Header, Button } from 'semantic-ui-react';
 import { useAppSelector, useEventAction } from '../../../app/hooks';
 import * as Yup from 'yup';
 import MyTextInput from '../../../app/common/form/my-text-input';
+import MyTextArea from '../../../app/common/form/my-text-area';
 
 const validationSchema = Yup.object({
     title: Yup.string().required('You must provide a title'),
@@ -58,7 +59,11 @@ export const EventForm: React.FC<EventFormProps> = ({ match, history }) => {
                     <Header sub color='teal' content='Event Details' />
                     <MyTextInput name='title' placeholder='Event title' />
                     <MyTextInput name='category' placeholder='Category' />
-                    <MyTextInput name='description' placeholder='Description' />
+                    <MyTextArea
+                        name='description'
+                        placeholder='Description'
+                        rows={3}
+                    />
                     <Header sub color='teal' content='Event Location Details' />
                     <MyTextInput name='city' placeholder='City' />
                     <MyTextInput name='venue' placeholder='Venue' />
