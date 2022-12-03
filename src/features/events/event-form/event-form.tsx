@@ -1,23 +1,20 @@
 import cuid from 'cuid';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, RouteComponentProps } from 'react-router-dom';
 import { Segment, Header, Form, Button } from 'semantic-ui-react';
+import { useAppSelector, useEventAction } from '../../../app/hooks';
 
-interface EventFormProps {
-    setFormOpen: React.Dispatch<React.SetStateAction<boolean>>;
-    setEvents: React.Dispatch<React.SetStateAction<Event[]>>;
-    createEvent: (e: Event) => void;
-    selectedEvent: Event | null;
-    updateEvent: (e: Event) => void;
-}
+interface EventFormProps extends RouteComponentProps {}
 
-export const EventForm: React.FC<EventFormProps> = ({
-    setFormOpen,
-    setEvents,
-    createEvent,
-    selectedEvent,
-    updateEvent,
-}) => {
+export const EventForm: React.FC<EventFormProps> = ({ match, history }) => {
+    const selectedEvent = useAppSelector(
+        (state) =>
+            //@ts-ignore
+            state.events.data.find((e) => e.id === match.params.id) as Event
+    );
+
+    const { createEvent, updateEvent } = useEventAction();
+
     const initialValues = selectedEvent ?? {
         title: '',
         category: '',
@@ -39,7 +36,7 @@ export const EventForm: React.FC<EventFormProps> = ({
                   attendees: [],
                   hostPhotoURL: './assets/user.png',
               });
-        setFormOpen(false);
+        history.push('/events');
     };
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {

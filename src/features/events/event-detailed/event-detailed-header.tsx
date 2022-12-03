@@ -53,7 +53,7 @@ const EventDetailedHeader: React.FC<EventDetailedHeaderProps> = ({ event }) => {
 
                 <Button
                     as={Link}
-                    to={`/manage/`}
+                    to={`/manage/${event.id}`}
                     color='orange'
                     floated='right'
                 >
