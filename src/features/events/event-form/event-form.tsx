@@ -9,13 +9,18 @@ import MyTextArea from '../../../app/common/form/my-text-area';
 import MySelectInput from '../../../app/common/form/my-select-input';
 import { categoryData } from '../../../app/api/category-options';
 import MyDateInput from '../../../app/common/form/my-date-input';
+import MyPlaceInput from '../../../app/common/form/my-place-input';
 
 const validationSchema = Yup.object({
     title: Yup.string().required('You must provide a title'),
     category: Yup.string().required('You must provide a category'),
     description: Yup.string().required('You must provide a description'),
-    city: Yup.string().required(),
-    venue: Yup.string().required(),
+    city: Yup.object().shape({
+        address: Yup.string().required(),
+    }),
+    venue: Yup.object().shape({
+        venue: Yup.string().required(),
+    }),
     date: Yup.string().required(),
 });
 
@@ -34,8 +39,14 @@ export const EventForm: React.FC<EventFormProps> = ({ match, history }) => {
         title: '',
         category: '',
         description: '',
-        city: '',
-        venue: '',
+        city: {
+            address: '',
+            latLng: null,
+        },
+        venue: {
+            address: '',
+            latLng: null,
+        },
         date: '',
     };
 
@@ -77,8 +88,8 @@ export const EventForm: React.FC<EventFormProps> = ({ match, history }) => {
                             color='teal'
                             content='Event Location Details'
                         />
-                        <MyTextInput name='city' placeholder='City' />
-                        <MyTextInput name='venue' placeholder='Venue' />
+                        <MyPlaceInput name='city' placeholder='City' />
+                        <MyPlaceInput name='venue' placeholder='Venue' />
                         <MyDateInput
                             name='date'
                             placeholderText='Event date'
