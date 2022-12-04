@@ -1,11 +1,12 @@
 import { Grid } from 'semantic-ui-react';
 import { useAppSelector } from '../../../app/hooks';
+import EventFilters from './event-filters';
 import EventList from './event-list';
 import EventListItemPlaceholder from './event-list-item-placeholder';
 
 const EventDashBoard: React.FC = () => {
     const events = useAppSelector((state) => state.events.data);
-    //handle loading   
+    //handle loading
     // const loading = useAppSelector()
 
     return (
@@ -20,7 +21,7 @@ const EventDashBoard: React.FC = () => {
                 <EventList events={events} />
             </Grid.Column>
             <Grid.Column width={6}>
-                <h2>event Filters</h2>
+                <EventFilters />
             </Grid.Column>
         </Grid>
     );

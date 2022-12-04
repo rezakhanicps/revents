@@ -16,6 +16,7 @@
     "date-fns": "^2.29.3",
     "formik": "^2.2.9",
     "react": "^18.2.0",
+    "react-calendar": "^4.0.0",
     "react-datepicker": "^3.0.0",
     "react-dom": "^18.2.0",
     "react-places-autocomplete": "^7.3.0",
@@ -54,6 +55,7 @@
     ]
   },
   "devDependencies": {
+    "@types/react-calendar": "^3.9.0",
     "@types/react-datepicker": "^4.8.0",
     "@types/react-places-autocomplete": "^7.2.9"
   }
