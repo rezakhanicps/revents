@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { sampleData } from '../../../app/api/sample-data';
+import { sampleData } from '../../../app/constant/sample-data';
 import { RootState } from '../../../app/store';
 
 export interface EventsState {

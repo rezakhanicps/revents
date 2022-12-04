@@ -7,7 +7,7 @@ import * as Yup from 'yup';
 import MyTextInput from '../../../app/common/form/my-text-input';
 import MyTextArea from '../../../app/common/form/my-text-area';
 import MySelectInput from '../../../app/common/form/my-select-input';
-import { categoryData } from '../../../app/api/category-options';
+import { categoryData } from '../../../app/constant/category-options';
 import MyDateInput from '../../../app/common/form/my-date-input';
 import MyPlaceInput from '../../../app/common/form/my-place-input';
 
