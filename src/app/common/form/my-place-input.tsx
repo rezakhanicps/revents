@@ -25,7 +25,10 @@ const MyPlaceInput: React.FC<any> = ({ options, ...props }) => {
     const handleBlur = (e: React.FocusEvent<any>) => {
         // field.onBlur(e);
         if (!field.value.latLng) {
-            helpers.setValue({ address: 'Tehran', latLng: {a: 1, b: 2} });
+            helpers.setValue({
+                address: 'London, UK',
+                latLng: { lat: 51.5118074, lng: -0.12300089999996544 },
+            });
         }
     };
 

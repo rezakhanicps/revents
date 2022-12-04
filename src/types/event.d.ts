@@ -4,8 +4,20 @@ interface Event {
     date: Date;
     category: string;
     description: string;
-    city: string;
-    venue: string;
+    city: {
+        address: string;
+        latLng: {
+            lat: number;
+            lng: number;
+        };
+    };
+    venue: {
+        address: string;
+        latLng: {
+            lat: number;
+            lng: number;
+        };
+    };
     hostedBy: string;
     hostPhotoURL: string;
     attendees: Attendee[];
