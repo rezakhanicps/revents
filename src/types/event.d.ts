@@ -4,20 +4,8 @@ interface Event {
     date: Date;
     category: string;
     description: string;
-    city: {
-        address: string;
-        latLng: {
-            lat: number;
-            lng: number;
-        };
-    };
-    venue: {
-        address: string;
-        latLng: {
-            lat: number;
-            lng: number;
-        };
-    };
+    city: string;
+    venue: string;
     hostedBy: string;
     hostPhotoURL: string;
     attendees: Attendee[];

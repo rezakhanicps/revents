@@ -15,12 +15,8 @@ const validationSchema = Yup.object({
     title: Yup.string().required('You must provide a title'),
     category: Yup.string().required('You must provide a category'),
     description: Yup.string().required('You must provide a description'),
-    city: Yup.object().shape({
-        address: Yup.string().required(),
-    }),
-    venue: Yup.object().shape({
-        venue: Yup.string().required(),
-    }),
+    city: Yup.string().required(),
+    venue: Yup.string().required(),
     date: Yup.string().required(),
 });
 
@@ -39,14 +35,8 @@ export const EventForm: React.FC<EventFormProps> = ({ match, history }) => {
         title: '',
         category: '',
         description: '',
-        city: {
-            address: '',
-            latLng: null,
-        },
-        venue: {
-            address: '',
-            latLng: null,
-        },
+        city: '',
+        venue: '',
         date: '',
     };
 
@@ -88,8 +78,8 @@ export const EventForm: React.FC<EventFormProps> = ({ match, history }) => {
                             color='teal'
                             content='Event Location Details'
                         />
-                        <MyPlaceInput name='city' placeholder='City' />
-                        <MyPlaceInput name='venue' placeholder='Venue' />
+                        <MyTextInput name='city' placeholder='City' />
+                        <MyTextInput name='venue' placeholder='Venue' />
                         <MyDateInput
                             name='date'
                             placeholderText='Event date'
