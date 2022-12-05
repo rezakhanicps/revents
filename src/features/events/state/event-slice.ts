@@ -31,7 +31,7 @@ export const eventSlice = createSlice({
     },
 });
 
-export const eventActions = eventSlice.actions 
+export const eventActions = eventSlice.actions;
 
 // Other code such as selectors can use the imported `RootState` type
 export const selectEvent = (state: RootState) => state.events.data;
